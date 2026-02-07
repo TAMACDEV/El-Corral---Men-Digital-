@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Corral - Menú Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Rye&display=swap" rel="stylesheet"> 
+    <link rel="icon" type="image/png" href="img/LOGO - EL CORRAL.ico">
+</head>
+
+<body>
+
+<header>
+    <img src="img/PORTADA MEJORADA.png" alt="Logo El Corral" class="main-logo-header">
+</header>
+
+<main id="menu-container">
+
+    <!-- HOJA 1 -->
+    <section class="sheet active" id="hoja1">
+        <div class="content-center">
+            <h2 class="country-font">¡Bienvenidos al Sabor Ahumado!</h2>
+            <div class="info-box">
+                <p>Abrimos todos los Domingos</p>
+                <p><strong>10:00 AM - 6:00 PM</strong></p>
+            </div>
+            <button class="btn-main" onclick="nextSheet(2)">ENTRAR AL CORRAL →</button>
+        </div>
+    </section>
+
+    <!-- HOJA 2 -->
+    <section class="sheet" id="hoja2">
+        <h2 class="country-font">¿Quiénes Somos?</h2>
+        <div class="text-block">
+            <p>Especialistas en el sabor a la brasa en <strong>Vega de Alatorre </strong></p>
+            <p>🛵 Envíos sin costo en el área local y alrededores</p>
+            <p><strong>Áreas más alejadas solo con servicio de moto entregas</strong></p>
+            <p>🔥 Disfruta de nuestras carnes ahumadas y guarniciones caseras</p>
+        </div>
+        <div class="nav-btns">
+            <button class="btn-back" onclick="nextSheet(1)">← Atrás</button>
+            <button class="btn-next" onclick="nextSheet(3)">Ver Menú →</button>
+        </div>
+    </section>
+
+    <!-- HOJA 3 COSTILLAS -->
+    <section class="sheet" id="hoja3">
+        <h2 class="country-font">Nuestras Costillas Ahumadas</h2>
+
+        <div class="item-special">
+            <h3>Varios Sabores</h3>
+            <img src="img/CARNES/SABORES.jpeg" class="banner">
+
+            <h3>Carne Natural</h3>
+            <img src="img/CARNES/NATURAL.jpeg" class="banner">
+
+            <p>Elige tu sabor:</p>
+
+            <!-- ID CORRECTO -->
+            <select id="sabor-costilla">
+                <option value="Bbq">Bbq</option>
+                <option value="Chiltepin">Chiltepin</option>
+                <option value="Crema Habanera">Crema Habanera</option>
+                <option value="Chipocrem">Chipocrem</option>
+                <option value="Natural">Natural</option>
+            </select>
+
+            <div class="price-buttons">
+                <button onclick="addCostilla('1 KG', 350)">1 KG - $350</button>
+                <button onclick="addCostilla('1/2 KG', 190)">1/2 KG - $190</button>
+                <button onclick="addCostilla('Orden', 120)">Orden - $120</button>
+            </div>
+        </div>
+
+        <div class="nav-btns">
+            <button class="btn-back" onclick="nextSheet(2)">← Atrás</button>
+            <button class="btn-next" onclick="nextSheet(4)">Guarniciones →</button>
+        </div>
+    </section>
+
+    <!-- HOJA 4 GUARNICIONES -->
+    <section class="sheet" id="hoja4">
+        <h2 class="country-font">Guarniciones</h2>
+
+        <div class="menu-grid">
+            <div class="item">
+                <img src="img/GUARNICIONES/PURE DE PAPA GRAVY.jpeg">
+                <h3>Puré de Papa</h3>
+                <button onclick="addToCart('Puré de Papa', 0)">+ Agregar</button>
+            </div>
+
+            <div class="item">
+                <img src="img/GUARNICIONES/ENSALADA KFC.jpeg">
+                <h3>Ensalada KFC</h3>
+                <button onclick="addToCart('Ensalada KFC', 0)">+ Agregar</button>
+            </div>
+
+            <div class="item">
+                <h3>Orden Arroz</h3>
+                <button onclick="addToCart('Orden Arroz', 0)">+ Agregar</button>
+            </div>
+
+            <div class="item">
+                <h3>Salsa Extra</h3>
+                <button onclick="addToCart('Salsa Extra', 0)">+ Agregar</button>
+            </div>
+        </div>
+
+        <div class="nav-btns">
+            <button class="btn-back" onclick="nextSheet(3)">← Atrás</button>
+            <button class="btn-next" onclick="nextSheet(5)">Contacto →</button>
+        </div>
+    </section>
+
+    <!-- HOJA EDITAR -->
+    <section class="sheet" id="hojaEditar">
+        <div class="content-center">
+            <h2 class="country-font">¿Quieres modificar algo?</h2>
+
+            <p style="margin:15px 0;">Puedes agregar más productos a tu pedido 👇</p>
+
+            <button class="btn-main" onclick="goToCostillas()">🍖 Agregar Costillas</button>
+            <button class="btn-main" onclick="goToGuarniciones()">🥗 Agregar Guarniciones</button>
+
+            <br><br>
+
+            <button class="btn-back" onclick="toggleCart()">⬅ Volver al carrito</button>
+        <button class="btn-back" onclick="nextSheet(1)">← Volver al Inicio</button>
+        </div>
+    </section>
+
+    <!-- HOJA 5 CONTACTO -->
+    <section class="sheet" id="hoja5">
+        <h2 class="country-font">Contacto</h2>
+        <div class="text-block">
+            <p>📍 Vega de Alatorre, Ver.</p>
+            <p>📞 Cel: 235 110 3070</p>
+            <p>⏰ Domingo: 10:00 AM - 6:00 PM</p>
+        </div>
+        <button class="btn-main" onclick="nextSheet(1)">Volver al Inicio</button>
+        <button class="btn-main" onclick="toggleCart()">Ver Carrito 🛒</button>
+    </section>
+
+</main>
+
+<!-- ICONO -->
+<div id="cart-icon" onclick="toggleCart()">
+    🛒 <span id="cart-count">0</span>
+</div>
+
+<!-- MODAL -->
+<div id="cart-modal" class="hidden">
+    <div class="cart-content">
+        <span class="close-x" onclick="toggleCart()">&times;</span>
+
+        <h3 class="country-font" style="color:#a31d1d">Tu Pedido</h3>
+        <div id="cart-items"></div>
+        <hr>
+        <p class="total-text">Total: $<span id="cart-total">0</span></p>
+        <input type="text" id="client-name" placeholder="¿A nombre de quién?">
+        <button class="btn-order" onclick="sendWhatsApp()">ENVIAR PEDIDO POR WHATSAPP 📱</button>
+        <button class="btn-clear" onclick="clearCart()">Vaciar Carrito 🗑️</button>
+
+        <!-- BOTÓN NUEVO -->
+        <button class="btn-close" onclick="openEdit()">Editar pedido ✏️</button>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
